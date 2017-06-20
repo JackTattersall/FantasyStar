@@ -1,10 +1,12 @@
 #[derive(PartialEq, Debug)]
+#[allow(dead_code)]
 enum TerrainGround {
     Soil,
     Stone,
 }
 
 #[derive(PartialEq, Debug)]
+#[allow(dead_code)]
 enum TerrainBlock {
     Tree,
     Soil,
@@ -12,21 +14,47 @@ enum TerrainBlock {
 }
 
 #[derive(PartialEq, Debug)]
+#[allow(dead_code)]
 enum Being {
     Orc,
     Human,
 }
 
+#[allow(dead_code)]
 struct Square {
     ground: TerrainGround,
     block: Option<TerrainBlock>,
-    being: Option<Being>,
+    beings: Option<Being>,
 }
 
+#[allow(dead_code)]
 struct Grid {
     size: (usize, usize),
     squares: Vec<Square>,
 }
+#[allow(dead_code)]
+impl Grid {
+    fn generate_empty(size_x: usize, size_y: usize) -> Grid {
+        let number_of_squares = size_x * size_y;
+        let mut squares: Vec<Square> = Vec::with_capacity(number_of_squares);
+
+        for _ in 0..number_of_squares {
+            squares.push(Square {
+                ground: TerrainGround::Soil,
+                block: None,
+                beings: None,
+            });
+        }
+
+        Grid {
+            size: (size_x, size_y),
+            squares: squares
+        }
+    }
+}
+
+
+// ------------------TESTS-------------------------
 
 #[cfg(test)]
 mod test {
