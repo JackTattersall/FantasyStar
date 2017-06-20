@@ -1,0 +1,7 @@
+[package]
+name = "fantasy_star"
+version = "0.1.0"
+authors = ["JackTattersall <jack.tattersall@opencastsoftware.com>"]
+description = "Fantasy strategy game"
+
+[dependencies]
