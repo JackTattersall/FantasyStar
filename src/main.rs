@@ -1,3 +1,8 @@
+use std::error::Error;
+use std::fmt::Formatter;
+use std::fmt::Display;
+use std::fmt;
+
 #[derive(PartialEq, Debug, Clone)]
 #[allow(dead_code)]
 enum TerrainGround {
@@ -36,6 +41,16 @@ enum MovementError {
     SquareOutsideGridBoundary,
     BeingAlreadyInSquare,
     TerrainGroundUnsuitable,
+}
+impl Display for MovementError {
+    fn fmt(&self, f: &mut Formatter) -> fmt::Result {
+        write!(f, "Movement Error {}", self)
+    }
+}
+impl Error for MovementError {
+    fn description(&self) -> &str {
+        "Movement Error"
+    }
 }
 
 #[allow(dead_code)]
@@ -195,6 +210,4 @@ mod test {
 }
 
 
-fn main() {
-    println!("Hello, world!");
-}
+fn main() {}
